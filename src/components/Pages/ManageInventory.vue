@@ -5,11 +5,6 @@
 </template>
 
 <script>
-    import ShopItem from './partials/ShopItem'
-    import Cart from './partials/Cart'
-    import fakeData from './../../fakeData/index'
-    import MenuCart from "../Partials/MenuCart"
-    import OrderSummary from "./partials/OrderSummary";
     export default {
         name: 'ManageInventory'
     }
