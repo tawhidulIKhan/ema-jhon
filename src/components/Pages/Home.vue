@@ -5,12 +5,10 @@
 </template>
 
 <script>
-    import Header from '../Partials/Header'
     import Shop from './Shop'
     export default {
         name: 'Home',
         components:{
-            Header,
             Shop
         },
         props: {

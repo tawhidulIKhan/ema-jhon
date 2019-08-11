@@ -57,7 +57,7 @@
         },
         mounted() {
             this.getOrderSummery();
-            EventBus.$on('cart_updated', name => {
+            EventBus.$on('cart_updated', () => {
                 this.getOrderSummery();
             })
         },
