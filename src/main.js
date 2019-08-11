@@ -5,15 +5,20 @@ import VueRouter from 'vue-router'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
-const Bar = { template: '<div>bar</div>' }
-
+import Home from './components/Pages/Home'
+import Shop from './components/Pages/Shop'
+import Review from './components/Pages/Review'
+import ManageInventory from './components/Pages/ManageInventory'
 // 2. Define some routes
 // Each route should map to a component. The "component" can
 // either be an actual component constructor created via
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-  { path: '/shop', component: Bar }
+  { path: '/', component: Home },
+  { path: '/review', component: Review },
+  { path: '/shop', component: Shop },
+  { path: '/manage', component: ManageInventory }
 ]
 
 // 3. Create the router instance and pass the `routes` option

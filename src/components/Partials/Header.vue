@@ -4,13 +4,13 @@
             <img :src="logo" alt="Logo"/>
             <ul>
                 <li>
-                    <a href="/shop">Shop</a>
+                    <router-link to="/shop">Shop</router-link>
                 </li>
                 <li>
-                    <a href="/review">Order Review</a>
+                    <router-link to="/review">Order Review</router-link>
                 </li>
                 <li>
-                    <a href="/manage">Manage Inventory</a>
+                    <router-link to="/manage">Manage Inventory</router-link>
                 </li>
             </ul>
         </div>

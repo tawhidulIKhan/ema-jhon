@@ -9,7 +9,7 @@
             </div>
             <div class="shop-container">
                 <div class="items-container">
-                    <ShopItem :key={key} :item="item" v-for="(item, key) in items"></ShopItem>
+                    <CartItem :key="index" :product="product" v-for="(product,index) in products"></CartItem>
                 </div>
                 <div class="cart-container">
                     <OrderSummary>
@@ -26,6 +26,9 @@
     import fakeData from './../../fakeData/index'
     import MenuCart from "../Partials/MenuCart"
     import OrderSummary from "./partials/OrderSummary";
+    import CartItem from "./partials/CartItem";
+    import CartHandler from './../../helpers/CartHandler'
+    import EventBus from '../../event-bus'
     export default {
         name: 'Shop',
         props: {
@@ -33,16 +36,22 @@
         },
         data(){
             return {
-                items: fakeData.slice(0,10)
+                items: fakeData.slice(0,10),
+                products: []
             }
         },
         components:{
+            CartItem,
             OrderSummary,
             MenuCart,
             ShopItem,
             Cart
         },
         mounted() {
+            this.products = CartHandler.getCartItems();
+            EventBus.$on('cart_updated', () => {
+                this.products = CartHandler.getCartItems();
+            })
         }
     }
 </script>

@@ -20,7 +20,7 @@
         mounted() {
             let that = this
             this.total = Localsore.countItem('emaJohn/carts/user-234')
-            EventBus.$on('product_added_to_cart', name => {
+            EventBus.$on('cart_updated', name => {
                that.total = Localsore.countItem(name)
             })
         }

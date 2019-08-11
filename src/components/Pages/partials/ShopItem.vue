@@ -11,22 +11,17 @@
                     <div>
                         <p>${{ item.price }}</p>
                         <p><small>only {{ item.stock }} left in stock - order soon</small></p>
-                        <!--<button onClick={() => this.props.addToCart(item.key)}>-->
                         <button @click="addToCart(item)">
                         <i class="fa fa-shopping-cart"></i>
                         <span>add to cart</span>
                         </button>
                     </div>
                     <div>
-                        <!--<Rating-->
-                                <!--class="ratings"-->
-                                <!--empty="fa fa-star-o"-->
-                                <!--full="fa fa-star"-->
-                                <!--placeholder="fa fa-star"-->
-                                <!--placeholderRate={item.star}-->
-                                <!--readonly-->
-                        <!--&gt;</Rating>-->
-                        <i class="fa fa-star-o"></i>
+                        <div class="ratings">
+                            <i v-for="(star,i) in item.star" class="fa fa-star"></i>
+                            <i v-for="(star,i) in (5-item.star)" class="fa fa-star-o"></i>
+
+                        </div>
                         <h4>Features</h4>
                         <ul>
                             <li :key="fkey" v-for="(feature, fkey) in item.features">
@@ -49,6 +44,10 @@
         props: {
             item: {type:Object, required:true}
         },
+        data(){
+          return {
+          }
+        },
         mounted() {
             console.log(this.item)
         },
@@ -62,7 +61,7 @@
                 }
               Store.add_to_cart('emaJohn/carts/user-234', product)
 
-                EventBus.$emit('product_added_to_cart', 'emaJohn/carts/user-234')
+                EventBus.$emit('cart_updated', 'emaJohn/carts/user-234')
             }
         }
     }

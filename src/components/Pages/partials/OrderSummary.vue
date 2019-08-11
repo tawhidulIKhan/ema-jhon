@@ -7,7 +7,7 @@
                 <tbody>
                 <tr>
                     <td>Items:</td>
-                    <td>${{ price }}</td>
+                    <td>${{ subTotal }}</td>
                 </tr>
                 <tr>
                     <td>Shipping & Handling:</td>
@@ -27,7 +27,11 @@
                 </tr>
                 </tbody>
             </table>
-            {this.props.children}
+            <router-link to="/review">
+                <button>
+                    <span>Review your order</span>
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -42,6 +46,7 @@
         },
         data(){
             return{
+                subTotal:0,
                 totalItem:0,
                 price:0,
                 shipping:0,
@@ -52,13 +57,14 @@
         },
         mounted() {
             this.getOrderSummery();
-            EventBus.$on('product_added_to_cart', name => {
+            EventBus.$on('cart_updated', name => {
                 this.getOrderSummery();
             })
         },
         methods:{
             getOrderSummery(){
                 this.totalItem = Cart.countItem()
+                this.subTotal = Cart.getSubtotal()
                 this.before_tax = Cart.totalBeforeTax()
                 this.tax = Cart.getTax()
                 this.total = Cart.getTotal()
@@ -88,5 +94,17 @@
         line-height: 22px;
         border-top: 1px solid gray;
         margin-top: 5px;
+    }
+    button{
+        background-color:#f0c14b;
+        border-color: #a88734 #9c7e31 #846a29;
+        color: #111;
+        width: 200px;
+        height: 26px;
+        border-style: solid;
+        border-width: 1px;
+        cursor: pointer;
+        border-radius: 3px;
+        vertical-align: middle;
     }
 </style>
