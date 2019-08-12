@@ -9,7 +9,7 @@
             </div>
             <div class="shop-container">
                 <div class="items-container">
-                    <ShopItem :key={key} :item="item" v-for="(item, key) in items"></ShopItem>
+                    <ShopItem :key="index" :item="item" v-for="(item, index) in items"></ShopItem>
                 </div>
                 <div class="cart-container">
                     <OrderSummary>

@@ -11,7 +11,8 @@
                 </div>
                 <div class="shipping-options">
                     <h5>Shipping options</h5>
-                    {this.shippingOptions.map(option => <ShippingOption key={option.type} option={option} shipping={item.shipping} /> )}
+                    <ShippingOptions :key="key" :product="product" :option="option" v-for="(option,key) in shipping_options"></ShippingOptions>
+                    <!--{this.shippingOptions.map(option => <ShippingOption key={option.type} option={option} shipping={item.shipping} /> )}-->
                 </div>
             </div>
         </div>
@@ -19,7 +20,9 @@
 </template>
 
 <script>
+    import shippingCosts from './../../../fakeData/shippingCosts'
     import CartHandler from './../../../helpers/CartHandler'
+    import ShippingOptions from './ShippingOptions'
     import EventBus from './../../../event-bus'
     export default {
         name: 'CartItem',
@@ -28,7 +31,11 @@
         },
         data(){
             return {
+                shipping_options: shippingCosts
             }
+        },
+        components:{
+            ShippingOptions
         },
         methods:{
             getQty(key){

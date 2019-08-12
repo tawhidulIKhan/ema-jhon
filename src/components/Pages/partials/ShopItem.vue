@@ -18,8 +18,8 @@
                     </div>
                     <div>
                         <div class="ratings">
-                            <i :key="i" v-for="(star,i) in item.star" class="fa fa-star"></i>
-                            <i :key="i" v-for="(star,i) in (5-item.star)" class="fa fa-star-o"></i>
+                            <i v-for="(star,i) in item.star" class="fa fa-star"></i>
+                            <i v-for="(star,ri) in (5-item.star)" class="fa fa-star-o"></i>
 
                         </div>
                         <h4>Features</h4>
