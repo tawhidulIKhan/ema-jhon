@@ -1,7 +1,7 @@
 <template>
-        <a>
+    <router-link to="/review">
             <span class="cart-count">{{ total }}</span>
-        </a>
+    </router-link>
 </template>
 
 <script>
