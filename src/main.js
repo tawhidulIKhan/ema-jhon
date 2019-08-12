@@ -9,6 +9,7 @@ import Home from './components/Pages/Home'
 import Shop from './components/Pages/Shop'
 import Review from './components/Pages/Review'
 import ManageInventory from './components/Pages/ManageInventory'
+import PlaceOrder from "./components/Pages/PlaceOrder";
 // 2. Define some routes
 // Each route should map to a component. The "component" can
 // either be an actual component constructor created via
@@ -18,7 +19,8 @@ const routes = [
   { path: '/', component: Home },
   { path: '/review', component: Review },
   { path: '/shop', component: Shop },
-  { path: '/manage', component: ManageInventory }
+  { path: '/manage', component: ManageInventory },
+  { path: '/place-order', component: PlaceOrder }
 ]
 
 // 3. Create the router instance and pass the `routes` option

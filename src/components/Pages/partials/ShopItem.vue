@@ -58,9 +58,9 @@
                     price:item.price,
                     qty:1
                 }
-              Store.add_to_cart('emaJohn/carts/user-234', product)
+              Store.add_to_cart(product)
 
-                EventBus.$emit('cart_updated', 'emaJohn/carts/user-234')
+                EventBus.$emit('cart_updated')
             }
         }
     }

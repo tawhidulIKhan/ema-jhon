@@ -27,11 +27,22 @@
                 </tr>
                 </tbody>
             </table>
-            <router-link to="/review">
-                <button>
-                    <span>Review your order</span>
-                </button>
-            </router-link>
+            <template v-if="is_review">
+                <router-link to="/place-order">
+                    <button>
+                        <span>Place order</span>
+                    </button>
+                </router-link>
+
+            </template>
+            <template v-else>
+                <router-link to="/review">
+                    <button>
+                        <span>Review your order</span>
+                    </button>
+                </router-link>
+
+            </template>
         </div>
     </div>
 </template>
@@ -52,7 +63,8 @@
                 shipping:0,
                 before_tax:0,
                 tax:0,
-                total:0
+                total:0,
+                is_review:false
             }
         },
         mounted() {
@@ -60,6 +72,11 @@
             EventBus.$on('cart_updated', () => {
                 this.getOrderSummery();
             })
+
+            let routeName = this.$route.path.replace(/\//,'')
+            if(routeName == 'review'){
+                this.is_review = true
+            }
         },
         methods:{
             getOrderSummery(){

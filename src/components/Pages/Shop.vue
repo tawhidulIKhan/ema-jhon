@@ -2,7 +2,7 @@
     <div>
         <div>
             <div class="search-container">
-                <input type="text" class="search-input" onKeyUp={this.handleSearch}
+                <input type="text" class="search-input" @keyup="search_handler"
                        placeholder="type here to search"/>
                 <MenuCart></MenuCart>
 
@@ -41,6 +41,15 @@
             ShopItem
         },
         mounted() {
+        },
+        methods:{
+            search_handler(e){
+                let filterTxt = e.target.value.toLowerCase()
+                let matched = fakeData.filter( (el) => {
+                   return el.category.toLowerCase().includes(filterTxt) || el.name.toLowerCase().includes(filterTxt)
+                })
+                this.items = matched.slice(0,10)
+            }
         }
     }
 </script>
